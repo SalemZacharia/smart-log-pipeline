@@ -1,23 +1,47 @@
-import pandas as pd
-import re
+import os
+import csv
+from datetime import datetime
 
-def parse_log_file(file_path):
-    pattern = re.compile(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s+(INFO|WARN|ERROR)\s+(.*)")
-    logs = []
+class LogIngestor:
+    def __init__(self, input_folder, output_file):
+        self.input_folder = input_folder
+        self.output_file = output_file
 
-    with open(file_path, "r") as file:
-        for line in file:
-            match = pattern.match(line)
-            if match:
-                logs.append({
-                    "timestamp": match.group(1),
-                    "level": match.group(2),
-                    "message": match.group(3)
-                })
+    def parse_line(self, line):
+        # Example log pattern: "2025-07-01 14:00:01 INFO  System started"
+        try:
+            parts = line.strip().split(' ', 2)
+            timestamp_str = parts[0] + ' ' + parts[1]
+            level = parts[2].split(' ')[0]
+            message = parts[2][len(level):].strip()
+            timestamp = datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M:%S")
+            return timestamp, level, message
+        except Exception as e:
+            print(f"[WARN] Failed to parse line: {line.strip()} ({e})")
+            return None
 
-    return pd.DataFrame(logs)
+    def process_files(self):
+        with open(self.output_file, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(['timestamp', 'level', 'message'])
 
-# Test
+            for filename in os.listdir(self.input_folder):
+                if filename.endswith(".log"):
+                    file_path = os.path.join(self.input_folder, filename)
+                    print(f"[INFO] Processing file: {file_path}")
+                    with open(file_path, 'r') as file:
+                        for line in file:
+                            parsed = self.parse_line(line)
+                            if parsed:
+                                writer.writerow(parsed)
+
 if __name__ == "__main__":
-    df = parse_log_file("data/sample.log")
-    print(df.head())
+    input_folder = "./data/raw"
+    output_file = "./data/processed/parsed_logs.csv"
+
+    os.makedirs("./data/processed", exist_ok=True)
+
+    ingestor = LogIngestor(input_folder, output_file)
+    ingestor.process_files()
+
+    print(f"[INFO] Logs parsed and saved to {output_file}")
