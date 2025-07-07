@@ -8,7 +8,7 @@ class LogIngestor:
         self.output_file = output_file
 
     def parse_line(self, line):
-        # Example log pattern: "2025-07-01 14:00:01 INFO  System started"
+        
         try:
             parts = line.strip().split(' ', 2)
             timestamp_str = parts[0] + ' ' + parts[1]
