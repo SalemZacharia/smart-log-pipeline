@@ -1,0 +1,7 @@
+{"timestamp":"2025-07-01 14:00:01","level":"INFO","message":"System started","message_length":14,"has_error":false,"has_warn":false,"has_fail":false,"has_exception":false,"severity":"Low","hour":14,"daytime":"Day"}
+{"timestamp":"2025-07-01 14:00:15","level":"WARN","message":"Low disk space","message_length":14,"has_error":false,"has_warn":false,"has_fail":false,"has_exception":false,"severity":"Low","hour":14,"daytime":"Day"}
+{"timestamp":"2025-07-01 14:01:30","level":"ERROR","message":"Database connection failed","message_length":26,"has_error":false,"has_warn":false,"has_fail":true,"has_exception":false,"severity":"Low","hour":14,"daytime":"Day"}
+{"timestamp":"2025-07-01 14:01:40","level":"INFO","message":"Attempting reconnect","message_length":20,"has_error":false,"has_warn":false,"has_fail":false,"has_exception":false,"severity":"Low","hour":14,"daytime":"Day"}
+{"timestamp":"2025-07-01 14:03:00","level":"ERROR","message":"Database connection failed","message_length":26,"has_error":false,"has_warn":false,"has_fail":true,"has_exception":false,"severity":"Low","hour":14,"daytime":"Day"}
+{"timestamp":"2025-07-01 14:05:00","level":"ERROR","message":"Critical process stopped","message_length":24,"has_error":false,"has_warn":false,"has_fail":false,"has_exception":false,"severity":"Low","hour":14,"daytime":"Day"}
+{"timestamp":"2025-07-01 14:06:00","level":"INFO","message":"System restarted","message_length":16,"has_error":false,"has_warn":false,"has_fail":false,"has_exception":false,"severity":"Low","hour":14,"daytime":"Day"}

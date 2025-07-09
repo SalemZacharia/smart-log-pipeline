@@ -1,0 +1,8 @@
+timestamp,level,message,message_length,has_error,has_warn,has_fail,has_exception,severity,hour,daytime
+2025-07-01 14:00:01,INFO,System started,14,False,False,False,False,Low,14,Day
+2025-07-01 14:00:15,WARN,Low disk space,14,False,False,False,False,Low,14,Day
+2025-07-01 14:01:30,ERROR,Database connection failed,26,False,False,True,False,Low,14,Day
+2025-07-01 14:01:40,INFO,Attempting reconnect,20,False,False,False,False,Low,14,Day
+2025-07-01 14:03:00,ERROR,Database connection failed,26,False,False,True,False,Low,14,Day
+2025-07-01 14:05:00,ERROR,Critical process stopped,24,False,False,False,False,Low,14,Day
+2025-07-01 14:06:00,INFO,System restarted,16,False,False,False,False,Low,14,Day
