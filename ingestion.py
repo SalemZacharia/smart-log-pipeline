@@ -45,3 +45,8 @@ if __name__ == "__main__":
     ingestor.process_files()
 
     print(f"[INFO] Logs parsed and saved to {output_file}")
+# ➕ Cette fonction permet d’appeler l’ingestion depuis d’autres fichiers
+def parse_logs(input_folder, output_file):
+    os.makedirs("./data/processed", exist_ok=True)
+    ingestor = LogIngestor(input_folder, output_file)
+    ingestor.process_files()
